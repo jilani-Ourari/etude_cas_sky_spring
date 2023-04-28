@@ -19,7 +19,17 @@ public class Skieur implements Serializable {
 
     private String ville;
 
+    @OneToOne
+    @JoinColumn(name = "idAbonnement")
+    private Abonnement abonnement;
 
+    @ManyToMany
+    @JoinTable(name = "skieur_piste",
+    joinColumns = @JoinColumn(name = "idPiste"),
+            inverseJoinColumns = @JoinColumn(name = "idSkieur"))
+    private List<Piste> pistes;
 
-
+    @OneToMany
+    @JoinColumn(name = "idSkieur")
+    private List<Inscription> inscriptions;
 }

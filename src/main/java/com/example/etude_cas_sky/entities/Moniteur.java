@@ -17,5 +17,8 @@ public class Moniteur {
 
     private Date dateRecru;
 
+    @OneToMany
+    private List<Cours> cours;
+
 
 }

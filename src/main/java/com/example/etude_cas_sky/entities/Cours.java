@@ -3,7 +3,7 @@ package com.example.etude_cas_sky.entities;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
+@Entity
 public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +22,15 @@ public class Cours {
 
 
     private  int creneau;
+
+    @OneToMany
+    @JoinColumn(name = "idCours")
+    private List<Inscription> inscriptions;
+
+    @ManyToOne
+    @JoinColumn(name = "idSkieur")
+    private Skieur skieur;
+
+    @ManyToOne
+    private Moniteur moniteur;
 }

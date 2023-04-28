@@ -12,5 +12,9 @@ public class Inscription {
     private Long idPiste;
     private int numSemaine;
 
+@ManyToOne
+    @JoinColumn(name = "idCours")
+    private Cours cours;
+
 
 }
