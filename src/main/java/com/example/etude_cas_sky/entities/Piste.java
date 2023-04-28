@@ -1,6 +1,8 @@
 package com.example.etude_cas_sky.entities;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -8,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "piste")
+@Data
 public class Piste implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

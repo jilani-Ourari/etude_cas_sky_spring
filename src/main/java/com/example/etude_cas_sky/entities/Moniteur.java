@@ -1,10 +1,13 @@
 package com.example.etude_cas_sky.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 @Table(name = "moniteur")
 public class Moniteur {
     @Id
@@ -19,6 +22,7 @@ public class Moniteur {
 
     @OneToMany
     private List<Cours> cours;
+
 
 
 }

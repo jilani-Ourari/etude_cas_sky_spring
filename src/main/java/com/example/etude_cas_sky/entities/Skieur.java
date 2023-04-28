@@ -1,16 +1,22 @@
 package com.example.etude_cas_sky.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "skieur")
 public class Skieur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idPiste")
     private Long numSkieur; // Clé primaire
     private String nomS;
     private String prenomS;
@@ -29,7 +35,14 @@ public class Skieur implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "idSkieur"))
     private List<Piste> pistes;
 
-    @OneToMany
-    @JoinColumn(name = "idSkieur")
+    @OneToMany(mappedBy = "skieur",cascade = CascadeType.ALL)
     private List<Inscription> inscriptions;
+
+    public Long getNumSkieur() {
+        return numSkieur;
+    }
+
+    public void setNumSkieur(Long numSkieur) {
+        this.numSkieur = numSkieur;
+    }
 }
