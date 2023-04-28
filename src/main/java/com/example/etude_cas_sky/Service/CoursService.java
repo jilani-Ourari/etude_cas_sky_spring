@@ -5,11 +5,15 @@ import com.example.etude_cas_sky.repository.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class CoursService {
 
     @Autowired
     CoursRepository coursRepository;
+
 
     public Cours addCours(Cours cours){
         return coursRepository.save(cours);

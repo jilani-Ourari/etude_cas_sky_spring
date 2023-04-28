@@ -18,7 +18,7 @@ public class Abonnement {
 
     private Date dateFin;
 
-    private Float prixAbon;
+    private float prixAbon;
 
     @Enumerated(EnumType.STRING)
     private TypeAbonnement typeAbonnement;
