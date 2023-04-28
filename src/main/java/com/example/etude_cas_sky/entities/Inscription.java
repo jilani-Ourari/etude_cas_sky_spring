@@ -16,7 +16,7 @@ public class Inscription {
     private Long inscriptionId; // Clé primaire
     private int numSemaine;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cours cours;
 
     @ManyToOne(cascade = CascadeType.ALL)

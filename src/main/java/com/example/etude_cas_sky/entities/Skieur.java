@@ -25,7 +25,7 @@ public class Skieur implements Serializable {
 
     private String ville;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idAbonnement")
     private Abonnement abonnement;
 

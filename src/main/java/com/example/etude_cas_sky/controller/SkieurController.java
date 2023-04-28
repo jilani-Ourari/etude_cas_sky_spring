@@ -27,10 +27,8 @@ public class SkieurController {
 
     @PostMapping
     public Skieur addSkieur(@RequestBody Skieur skieur){
-
         skieur.getInscriptions().forEach(inscription -> {
             inscription.setSkieur(skieur);
-            inscriptionService.addInscription(inscription);
         });
         return skieurService.addSkieur(skieur);
     }
