@@ -4,6 +4,7 @@ package com.example.etude_cas_sky.controller;
 import com.example.etude_cas_sky.Service.InscriptionService;
 import com.example.etude_cas_sky.Service.SkieurService;
 import com.example.etude_cas_sky.entities.Skieur;
+import com.example.etude_cas_sky.entities.TypeAbonnement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,11 @@ public class SkieurController {
     @PutMapping
     public Skieur updateSkieur(@RequestParam Long id,@RequestBody Skieur skieur){
         return skieurService.updateSkieur(id,skieur);
+    }
+
+    @GetMapping("/abonnement")
+    public List<Skieur> getSkieurByAbonnement(@RequestParam TypeAbonnement typeAbonnement){
+        return skieurService.getSkieurByAbonnement(typeAbonnement);
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.etude_cas_sky.Service;
 
 import com.example.etude_cas_sky.entities.Skieur;
+import com.example.etude_cas_sky.entities.TypeAbonnement;
 import com.example.etude_cas_sky.repository.SkieurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class SkieurService {
     }
     public List<Skieur> getAllSkieurs(){
         return skieurRepository.findAll();
+    }
+
+    public List<Skieur> getSkieurByAbonnement(TypeAbonnement typeAbonnement){
+        return skieurRepository.findByAbonnementTypeAbonnement(typeAbonnement);
     }
 
   public Optional<Skieur> findById(Long id){
