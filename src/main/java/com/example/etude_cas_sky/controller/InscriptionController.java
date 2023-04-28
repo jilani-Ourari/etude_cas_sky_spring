@@ -22,4 +22,6 @@ public class InscriptionController {
     public List<Inscription> getInscription(){
         return inscriptionService.getInscription();
     }
+
+
 }

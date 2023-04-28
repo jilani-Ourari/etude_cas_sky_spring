@@ -1,11 +1,12 @@
 package com.example.etude_cas_sky.Service;
 
-import com.example.etude_cas_sky.entities.Skieur;
-import com.example.etude_cas_sky.entities.TypeAbonnement;
+import com.example.etude_cas_sky.entities.*;
+import com.example.etude_cas_sky.repository.PisteRepository;
 import com.example.etude_cas_sky.repository.SkieurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,8 @@ public class SkieurService {
     @Autowired
      SkieurRepository skieurRepository;
 
+@Autowired
+    PisteRepository pisteRepository;
  public Skieur addSkieur(Skieur skieur){
         return skieurRepository.save(skieur);
     }
@@ -50,4 +53,21 @@ public class SkieurService {
   public Optional<Skieur> findById(Long id){
         return skieurRepository.findById(id);
     }
+    HashMap<Couleur,Integer> nombreSkieursParCouleurPiste(){
+        HashMap<Couleur,Integer> map = new HashMap<>();
+        List<Skieur> skieurs= skieurRepository.findAll();
+
+        for (Skieur skieur:skieurs) {
+           for (Piste piste:skieur.getPistes()) {
+               Couleur couleur = piste.getCouleur();
+               if(map.containsKey(couleur)){
+                   map.put(couleur,map.get(couleur)+1);
+               }else{
+                   map.put(couleur,0);
+               }
+        }
+
+        }
+return map;
+    };
 }
